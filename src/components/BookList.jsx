@@ -19,6 +19,11 @@ class BookList extends Component {
             aria-label="Search"
             aria-describedby="basic-search"
             value={this.state.query}
+            onChange={(e) => {
+              this.setState({
+                query: e.target.value,
+              });
+            }}
           />
           <InputGroup.Text>Search</InputGroup.Text>
         </InputGroup>
