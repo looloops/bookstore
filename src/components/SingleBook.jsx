@@ -13,7 +13,7 @@ class SingleBook extends Component {
       <>
         <Card className={this.state.selected && "card-selected"}>
           <Card.Img
-            style={{ width: "100%", "object-fit": "cover", height: "600px" }}
+            style={{ width: "100%", objectFit: "cover", height: "600px" }}
             variant="top"
             src={item.img}
             onClick={() => this.toggleSelection()}
@@ -21,14 +21,14 @@ class SingleBook extends Component {
           <Card.Body>
             <Card.Title>{item.title}</Card.Title>
             <Card.Text>
-              <ul>
-                <li>Category: {item.category}</li>
-                <li>Price: {item.price}</li>
-              </ul>
+              <span>Category: {item.category}</span>
+              <br />
+              <span>Price: {item.price}</span>
             </Card.Text>
           </Card.Body>
         </Card>
-        <CommentArea idBook={this.props._id} />
+
+        {this.state.selected && <CommentArea idBook={item.asin} bookSelected={this.state.selected} />}
       </>
     );
   }

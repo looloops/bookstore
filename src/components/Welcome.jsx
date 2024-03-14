@@ -2,7 +2,7 @@ import Alert from "react-bootstrap/Alert";
 
 function Welcome() {
   return (
-    <Alert variant="info" closeLabel="x" dismissable={true}>
+    <Alert variant="info">
       <Alert.Heading>Hey, nice to see you</Alert.Heading>
       <p>It's great to have you here again!</p>
       <hr />
