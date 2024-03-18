@@ -52,7 +52,7 @@ class CommentArea extends Component {
         {this.state.comments.length === 0 && this.state.isLoading === false && this.state.isError === false && (
           <>
             <ListGroup.Item>Aggiungi il primo commento a questo libro.</ListGroup.Item>
-            <AddComment />
+            <AddComment asin={this.props.idBook} />
           </>
         )}
         {this.state.isLoading === true && (
@@ -65,7 +65,12 @@ class CommentArea extends Component {
             <Alert>Qualcosa è andato storto</Alert>
           </div>
         )}
-        {this.state.comments.length > 0 && <CommentList arrComments={this.state.comments} />}
+        {this.state.comments.length > 0 && (
+          <>
+            <CommentList arrComments={this.state.comments} />
+            <AddComment asin={this.props.idBook} />
+          </>
+        )}
       </ListGroup>
     );
   }
