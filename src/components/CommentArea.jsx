@@ -8,11 +8,16 @@ import AddComment from "./AddComment";
 class CommentArea extends Component {
   state = {
     comments: [],
-    isLoading: true,
+    isLoading: false,
     isError: false,
   };
 
   getComments = (id) => {
+    this.setState({
+      ...this.state,
+      isLoading: true,
+    });
+
     fetch(`https://striveschool-api.herokuapp.com/api/comments/${id}`, {
       headers: {
         Authorization:
@@ -42,8 +47,10 @@ class CommentArea extends Component {
       });
   };
 
-  componentDidMount() {
-    this.getComments(this.props.idBook);
+  componentDidUpdate(prevProps) {
+    if (this.props.idBook && prevProps.idBook !== this.props.idBook) {
+      this.getComments(this.props.idBook);
+    }
   }
 
   render() {
